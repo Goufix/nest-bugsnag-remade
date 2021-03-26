@@ -1,7 +1,12 @@
-import { DynamicModule, Global, Module } from '@nestjs/common';
-
-import { BugsnagModuleAsyncOptions, BugsnagModuleOptions } from './bugsnag.interfaces';
-import { createBugsnagProviders, createBugsnagAsyncProviders } from './bugsnag.providers';
+import { DynamicModule, Global, Module } from "@nestjs/common";
+import {
+  BugsnagModuleAsyncOptions,
+  BugsnagModuleOptions,
+} from "./bugsnag.interfaces";
+import {
+  createBugsnagAsyncProviders,
+  createBugsnagProviders,
+} from "./bugsnag.providers";
 
 @Global()
 @Module({})

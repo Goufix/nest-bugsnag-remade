@@ -1,19 +1,28 @@
-import { Provider } from '@nestjs/common';
+import { Provider } from "@nestjs/common";
+import {
+  BUGSNAG_MODULE_OPTIONS,
+  BUGSNAG_MODULE_PROVIDER,
+} from "./bugsnag.constants";
+import {
+  BugsnagModuleAsyncOptions,
+  BugsnagModuleOptions,
+} from "./bugsnag.interfaces";
+import { BugsnagService } from "./bugsnag.service";
 
-import { BUGSNAG_MODULE_OPTIONS, BUGSNAG_MODULE_PROVIDER } from './bugsnag.constants';
-import { BugsnagModuleAsyncOptions, BugsnagModuleOptions } from './bugsnag.interfaces';
-import { BugsnagService } from './bugsnag.service';
-
-export function createBugsnagProviders(loggerOpts: BugsnagModuleOptions): Provider[] {
+export function createBugsnagProviders(
+  loggerOpts: BugsnagModuleOptions
+): Provider[] {
   return [
     {
       provide: BUGSNAG_MODULE_PROVIDER,
       useFactory: () => new BugsnagService(loggerOpts),
-    }
+    },
   ];
 }
 
-export function createBugsnagAsyncProviders(options: BugsnagModuleAsyncOptions): Provider[] {
+export function createBugsnagAsyncProviders(
+  options: BugsnagModuleAsyncOptions
+): Provider[] {
   return [
     {
       provide: BUGSNAG_MODULE_OPTIONS,
@@ -22,8 +31,9 @@ export function createBugsnagAsyncProviders(options: BugsnagModuleAsyncOptions):
     },
     {
       provide: BUGSNAG_MODULE_PROVIDER,
-      useFactory: async (loggerOpts: BugsnagModuleOptions) => new BugsnagService(loggerOpts),
-      inject: [BUGSNAG_MODULE_OPTIONS]
-    }
+      useFactory: async (loggerOpts: BugsnagModuleOptions) =>
+        new BugsnagService(loggerOpts),
+      inject: [BUGSNAG_MODULE_OPTIONS],
+    },
   ];
 }
