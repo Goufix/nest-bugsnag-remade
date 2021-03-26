@@ -1,6 +1,6 @@
 {
   "name": "nest-bugsnag-remade",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Nest module wrapper for bugsnag - forked from nest-bugsnag",
   "keywords": [
     "nestjs",
