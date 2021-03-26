@@ -1,11 +1,12 @@
-import bugsnag  from '@bugsnag/js';
-import { Injectable } from '@nestjs/common';
-
-import { BugsnagModuleOptions, BugsnagClientInterface } from './bugsnag.interfaces';
+import bugsnag from "@bugsnag/js";
+import { Injectable } from "@nestjs/common";
+import {
+  BugsnagClientInterface,
+  BugsnagModuleOptions,
+} from "./bugsnag.interfaces";
 
 @Injectable()
 export class BugsnagService {
-
   get instance(): BugsnagClientInterface {
     return this._instance;
   }
@@ -13,6 +14,6 @@ export class BugsnagService {
   private readonly _instance: BugsnagClientInterface;
 
   constructor(options: BugsnagModuleOptions) {
-    this._instance = bugsnag(options);
+    this._instance = bugsnag.start(options);
   }
 }
